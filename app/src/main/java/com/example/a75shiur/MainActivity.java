@@ -17,6 +17,15 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentView, firstfragment).commit();
         ScecondFragment scecondFragment = ScecondFragment.newInstance();
 
+        Bundle args = new Bundle();
+        args.putString("test" , "frag1");
+        firstfragment.setArguments(args);
+
+
+
+
+
+
         Button frag1 = findViewById(R.id.frag1btn);
         Button frag2 = findViewById(R.id.frag2btn);
 

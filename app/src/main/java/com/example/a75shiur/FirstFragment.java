@@ -40,8 +40,13 @@ public class FirstFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_first, container, false);
-        TextView tv = view.findViewById(R.id.fragfirst);
-        tv.setText("Hello 1");
-        return view;
+        if (getArguments() != null) {
+            TextView tv = view.findViewById(R.id.fragfirst);
+            Bundle args = getArguments();
+            String text = args.getString("test", "Default value");
+            tv.setText(text);
+        }
+            return view;
+
     }
 }
