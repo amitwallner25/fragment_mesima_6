@@ -29,7 +29,7 @@
         app:layout_constraintStart_toEndOf="@+id/frag1btn"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <fragment
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
