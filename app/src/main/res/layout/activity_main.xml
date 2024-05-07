@@ -7,6 +7,36 @@
     tools:context=".MainActivity">
 
 
+    <Button
+        android:id="@+id/frag1btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fragment 1"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toStartOf="@+id/frag2btn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/frag2btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fragment 2"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/frag1btn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frag1btn"
+        android:id="@+id/fragmentView"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
