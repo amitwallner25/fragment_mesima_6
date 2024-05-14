@@ -8,6 +8,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tvfrag2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="fragment 2"
@@ -16,6 +17,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/tvfrag2"/>
+        app:layout_constraintVertical_bias="0.055" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter text to pass to other fragment:"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvfrag2" />
+
+    <EditText
+        android:id="@+id/Editf2"
+        android:layout_width="323dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv2" />
+
+    <Button
+        android:id="@+id/Savef2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="150dp"
+        android:text="Save"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Editf2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
