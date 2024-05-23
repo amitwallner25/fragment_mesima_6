@@ -1,5 +1,7 @@
 package com.example.a75shiur;
 
+import static android.view.View.inflate;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +23,7 @@ public class ScecondFragment extends Fragment {
     public ScecondFragment() {
         // Required empty public constructor
     }
+    SQLiteManager ma;
 
     /**
      * Use this factory method to create a new instance of
@@ -46,7 +52,26 @@ public class ScecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_scecond, container, false);
+
+
+
+
+        View view = inflater.inflate(R.layout.fragment_scecond, container, false);
+        Button save2 = view.findViewById(R.id.Savef2);
+        EditText ed2 = view.findViewById(R.id.Editf2);
+        TextView tv2 = view.findViewById(R.id.tv2);
+
+        save2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ma.updateUserToDB(null, ed2.getText().toString());
+            }
+        });
+        tv2.setText(ma.getTextFromFragments()[0]);
+
+
+
+         return view;
     }
 
 

@@ -65,12 +65,12 @@ public class SQLiteManager extends SQLiteOpenHelper {
         //on changing the DB. We are not implementing this for now
     }
 
-    public void addUserToDB(String username,String password) {
+    public void addUserToDB(String frag1,String farg2) {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(FIRST_FIELD, username);
-        values.put(SECOND_FIELD, password);
+        values.put(FIRST_FIELD, frag1);
+        values.put(SECOND_FIELD, farg2);
 
         db.insert(TABLE_NAME, null, values);
     }
@@ -88,45 +88,30 @@ public class SQLiteManager extends SQLiteOpenHelper {
         db.update(TABLE_NAME, values, "un=?", new String [] {username});
     }
 
-    public boolean validateUserFromDB(String username,String password) {
+    public String [] getTextFromFragments() {
         SQLiteDatabase db = getReadableDatabase();
+        String [] resultText = new String [2] ;
+
 
         //we try to get all the notes from the DB
         try (Cursor result = db.rawQuery("SELECT * FROM " + TABLE_NAME, null)) {
             //The results are given back an Object called Cursor that let's us iterate over all the results
             // Read more about Cursor at https://developer.android.com/reference/android/database/Cursor
-            while (result.moveToNext()) {
+            result.moveToLast();
                 //The table we setup has 5 columns and this is how we can access each item in the row
-                String dbfrag1 = result.getString(1);
-                String dbfrag2 = result.getString(2);
-                if (Objects.equals(dbfrag1, username))
-                {
-                    if (Objects.equals(dbfrag2, password))
-                    {
-                        return true;
-                    }
-                }
+            resultText[0] = result.getString(1);
+            resultText[1] = result.getString(2);
+        }
+            catch(SQLiteException e){
+                // handle exception, e.g. log error message
+                Log.e("SQLiteManager", "Error executing query", e);
+            }
+            catch(CursorIndexOutOfBoundsException e){
+                // handle exception, e.g. log error message
+                Log.e("SQLiteManager", "There was a problem reading one of the fields", e);
 
             }
-        } catch (SQLiteException e) {
-            // handle exception, e.g. log error message
-            Log.e("SQLiteManager", "Error executing query", e);
-        } catch (CursorIndexOutOfBoundsException e) {
-            // handle exception, e.g. log error message
-            Log.e("SQLiteManager", "There was a problem reading one of the fields", e);
 
-        }
-        return false;
+        return resultText;
     }
-
-    public String getFirstField(){
-        SQLiteDatabase db = getReadableDatabase();
-        return getFirstField();
-    }
-
-    public String getSecondField(){
-        SQLiteDatabase db = getReadableDatabase();
-        return getSecondField();
-    }
-
 }
