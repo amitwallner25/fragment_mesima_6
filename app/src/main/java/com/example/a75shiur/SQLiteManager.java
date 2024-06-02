@@ -79,8 +79,12 @@ public class SQLiteManager extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(FIRST_FIELD, username);
-        values.put(SECOND_FIELD, password);
+        if (username != null) {
+            values.put(FIRST_FIELD, username);
+        }
+        if (username != null) {
+            values.put(SECOND_FIELD, password);
+        }
 
         //Here we are asking to update the table with TABLE_NAME with the values in values. We
         //only update the lines in the table WHERE ID equals the values in the string array that is

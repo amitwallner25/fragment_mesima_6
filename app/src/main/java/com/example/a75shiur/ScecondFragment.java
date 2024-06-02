@@ -54,20 +54,21 @@ public class ScecondFragment extends Fragment {
         // Inflate the layout for this fragment
 
 
-
-
+        ma = new SQLiteManager(getContext());
+        String [] x ;
         View view = inflater.inflate(R.layout.fragment_scecond, container, false);
         Button save2 = view.findViewById(R.id.Savef2);
         EditText ed2 = view.findViewById(R.id.Editf2);
-        TextView tv2 = view.findViewById(R.id.tv2);
+        TextView tv1 = view.findViewById(R.id.tv1);
 
         save2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ma.updateUserToDB(null, ed2.getText().toString());
+                ma.updateUserToDB("didnt work", ed2.getText().toString());
             }
         });
-        tv2.setText(ma.getTextFromFragments()[0]);
+        x = ma.getTextFromFragments();
+        tv1.setText(x[1]);
 
 
 

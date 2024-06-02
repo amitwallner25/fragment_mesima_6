@@ -21,7 +21,6 @@ public class FirstFragment extends Fragment {
         // Required empty public constructor
     }
     SQLiteManager ma;
-
     // TODO: Rename and change types and number of parameters
     public static FirstFragment newInstance() {
         FirstFragment fragment = new FirstFragment();
@@ -33,8 +32,7 @@ public class FirstFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            //mParam1 = getArguments().getString(ARG_PARAM1);
-            //mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -44,17 +42,18 @@ public class FirstFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_first, container, false);
         String [] x ;
+        ma = new SQLiteManager(getContext());
         Button save1 = view.findViewById(R.id.Save1);
         EditText ed1 = view.findViewById(R.id.Editf1);
-        TextView tv1 = view.findViewById(R.id.tv1);
+        TextView tv2 = view.findViewById(R.id.tv2);
         save1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ma.updateUserToDB(ed1.getText().toString(), null);
+                ma.updateUserToDB(ed1.getText().toString(), "didnt work");
             }
         });
         x = ma.getTextFromFragments();
-        tv1.setText(x[1]);
+        tv2.setText(x[1]);
 
         return view;
 
