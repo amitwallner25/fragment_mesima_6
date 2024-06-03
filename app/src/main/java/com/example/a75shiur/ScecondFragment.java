@@ -60,15 +60,15 @@ public class ScecondFragment extends Fragment {
         Button save2 = view.findViewById(R.id.Savef2);
         EditText ed2 = view.findViewById(R.id.Editf2);
         TextView tv1 = view.findViewById(R.id.tv1);
+        x = ma.getTextFromFragments();
 
         save2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ma.updateUserToDB("didnt work", ed2.getText().toString());
+                ma.savetexttodatabase(x[0], ed2.getText().toString());
             }
         });
-        x = ma.getTextFromFragments();
-        tv1.setText(x[1]);
+        tv1.setText(x[0]);
 
 
 

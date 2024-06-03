@@ -46,13 +46,14 @@ public class FirstFragment extends Fragment {
         Button save1 = view.findViewById(R.id.Save1);
         EditText ed1 = view.findViewById(R.id.Editf1);
         TextView tv2 = view.findViewById(R.id.tv2);
+        x = ma.getTextFromFragments();
         save1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ma.updateUserToDB(ed1.getText().toString(), "didnt work");
+                ma.savetexttodatabase(ed1.getText().toString(),x[1]);
             }
         });
-        x = ma.getTextFromFragments();
+
         tv2.setText(x[1]);
 
         return view;

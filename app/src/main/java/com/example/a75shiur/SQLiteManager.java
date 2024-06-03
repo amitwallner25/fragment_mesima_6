@@ -90,6 +90,30 @@ public class SQLiteManager extends SQLiteOpenHelper {
         //only update the lines in the table WHERE ID equals the values in the string array that is
         // passed in the last argument
         db.update(TABLE_NAME, values, "un=?", new String [] {username});
+
+    }
+    public void savetexttodatabase(String f1text, String f2text) {
+        // Get a writable database
+        SQLiteDatabase db = getWritableDatabase();
+
+        // Create a ContentValues object to hold the data
+        ContentValues values = new ContentValues();
+
+        // Add the first field text to the ContentValues object if it's not null
+        if (f1text != null) {
+            values.put(FIRST_FIELD, f1text);  // Replace FIRST_FIELD with the actual column name for the first field
+        }
+
+        // Add the second field text to the ContentValues object if it's not null
+        if (f2text != null) {
+            values.put(SECOND_FIELD, f2text);  // Replace SECOND_FIELD with the actual column name for the second field
+        }
+
+        // Insert the new row into the table
+        db.insert(TABLE_NAME, null, values);  // Replace TABLE_NAME with the actual table name
+
+        // Close the database to avoid memory leaks
+        db.close();
     }
 
     public String [] getTextFromFragments() {
